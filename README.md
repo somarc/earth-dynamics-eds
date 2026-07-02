@@ -1,5 +1,8 @@
-# Your Project's Title...
-Your project's description...
+# Weatherly (earth-dynamics-eds)
+
+Helix authoring shell for **Weatherly** — a time-synchronized Earth-system timeline. The globe instrument mounts as an EDS `widget` block; nav, trust copy, and methodology pages stay conventional DA content.
+
+**App source:** [somarc/earth-dynamics](https://github.com/somarc/earth-dynamics) · widget bundle vendored under `widgets/weatherly/`
 
 ## Environments
 - Preview: https://main--{repo}--{owner}.aem.page/

@@ -1,0 +1,241 @@
+    <div id="bootstrap-gate" class="bootstrap-gate bootstrap-gate--hidden" role="alertdialog" aria-labelledby="bootstrap-title" aria-modal="true">
+      <div class="bootstrap-gate__card">
+        <h2 id="bootstrap-title" class="bootstrap-gate__title">Timeline data not loaded</h2>
+        <p id="bootstrap-desc" class="bootstrap-gate__desc">
+          Wobblescope needs ingested EOP dates before the globe and scrubber can start.
+        </p>
+        <p class="bootstrap-gate__hint">From the repo root (first run may take several minutes and ~100&nbsp;MB of generated data):</p>
+        <pre class="bootstrap-gate__cmd">npm run fetch-data
+npm run ingest
+npm run start</pre>
+        <button type="button" id="bootstrap-retry" class="bootstrap-gate__retry">Retry after ingest</button>
+      </div>
+    </div>
+    <div id="app">
+      <header class="header">
+        <div class="header__row header__row--primary">
+          <h1
+            class="header__title"
+            title="Spin, shake, storm &amp; syzygy — Earth's layers on one scrubbable timeline"
+          >
+            <img
+              src="/assets/weatherly-mascot.jpg"
+              alt=""
+              class="header__mascot"
+              width="22"
+              height="22"
+              decoding="async"
+            />
+            <span>Wobblescope</span>
+          </h1>
+          <div class="header__cluster header__cluster--views" role="group" aria-label="View mode">
+            <button type="button" class="view-chip view-btn view-btn--active" data-view="geocentric" title="Earth-centered globe">Geo</button>
+            <button type="button" class="view-chip view-btn" data-view="heliocentric" title="Sun-centered system">Helio</button>
+          </div>
+          <div class="header__cluster header__cluster--meta">
+            <span id="date-display" class="header-date">—</span>
+            <span id="mode-badge" class="status-chip" hidden></span>
+            <div id="asof-chips" class="header-chips asof-chips--hidden" aria-live="polite"></div>
+            <div id="staleness-chips" class="header-chips staleness-chips--hidden" aria-live="polite"></div>
+          </div>
+        </div>
+        <div class="header__row header__row--legend">
+          <div class="header__legend-block">
+            <div class="legend" id="legend" aria-label="Globe legend"></div>
+            <p id="legend-help" class="legend-help" aria-live="polite">Hover a legend chip to see what it represents on the globe.</p>
+          </div>
+        </div>
+      </header>
+
+      <main class="layout">
+        <section class="viewport" id="viewport">
+          <canvas id="geo-canvas" class="scene-canvas"></canvas>
+          <canvas id="helio-canvas" class="scene-canvas scene-canvas--hidden"></canvas>
+          <div class="viewport__overlay">
+            <div id="plate-tooltip" class="plate-tooltip plate-tooltip--hidden" aria-hidden="true"></div>
+          </div>
+        </section>
+
+        <aside class="panels">
+          <div class="panel">
+            <h2>Polhode</h2>
+            <p class="panel__desc">Spin-pole wander in the Earth-fixed frame (IERS x, −y) — not magnetic north (◆ on globe)</p>
+            <canvas id="polhode-chart" width="388" height="240"></canvas>
+          </div>
+
+          <div class="panel panel--rotation" id="rotation-panel">
+            <h2>Angular Velocity</h2>
+            <p class="panel__desc">ΔLOD, Δω₃, and GFZ AAM z anomaly (established atmosphere–rotation coupling)</p>
+            <canvas id="lod-chart" width="388" height="160"></canvas>
+          </div>
+
+          <div class="panel panel--orbital-split">
+            <div class="orbital-split">
+              <div class="orbital-split__pane">
+                <h3 class="orbital-split__title">Ecliptic Plane</h3>
+                <p class="panel__desc">Geocentric XY (JPL DE441) — Moon trail 28 d</p>
+                <canvas id="ecliptic-chart" width="188" height="220"></canvas>
+              </div>
+              <div class="orbital-split__pane">
+                <h3 class="orbital-split__title">Helical Motion</h3>
+                <p class="panel__desc">Sun through galactic plane; planets coil in heliocentric frame</p>
+                <canvas id="helical-chart" width="188" height="220"></canvas>
+              </div>
+            </div>
+          </div>
+
+          <div class="panel">
+            <h2>Lunar &amp; Planetary Geometry</h2>
+            <div id="orbital-metrics"></div>
+          </div>
+
+          <div class="panel panel--space-weather" id="space-weather-panel">
+            <h2>Space Weather</h2>
+            <p class="panel__desc">Kp, Dst, solar wind, CMEs &amp; flares (OMNI / DONKI / NOAA SWPC)</p>
+            <canvas id="kp-chart" width="388" height="88"></canvas>
+            <canvas id="dst-chart" width="388" height="88"></canvas>
+            <div id="space-weather-metrics"></div>
+          </div>
+
+          <div class="panel panel--inspect">
+            <h2>Inspect</h2>
+            <p class="panel__desc">Hover or click quakes, volcanoes, hotspots, plates &amp; boundaries</p>
+            <div id="event-inspect"></div>
+          </div>
+
+          <div class="panel panel--events">
+            <h2 id="events-panel-title">Events at Date</h2>
+            <p class="panel__desc" id="events-panel-desc">±7 day windows (API default)</p>
+            <p class="panel__hint" id="events-volc-hint">▲ cones = Smithsonian GVP eruption <em>episodes</em> active on the selected date — not every holocene volcano.</p>
+            <ul id="event-list" class="event-list"></ul>
+          </div>
+
+          <div class="panel panel--citations">
+            <h2>Data Sources</h2>
+            <ul class="citations" id="citations"></ul>
+          </div>
+        </aside>
+      </main>
+
+      <footer class="controls">
+        <div class="controls__row controls__row--timeline">
+          <button id="play-btn" class="btn btn--play" aria-label="Play/pause">▶</button>
+          <div class="controls__scrub">
+            <div class="timeline-readout" aria-live="polite">
+              <span id="scrub-date" class="timeline-readout__date">—</span>
+              <span id="scrub-meta" class="timeline-readout__meta">—</span>
+            </div>
+            <div class="timeline-track">
+              <div id="timeline-ticks" class="timeline-ticks" aria-hidden="true"></div>
+              <div id="timeline-fill" class="timeline-fill" aria-hidden="true"></div>
+              <input
+                type="range"
+                id="time-slider"
+                class="slider timeline-slider"
+                min="0"
+                max="100"
+                value="0"
+                aria-label="Timeline scrubber"
+                aria-valuemin="0"
+                aria-valuemax="100"
+                aria-valuenow="0"
+                aria-valuetext="—"
+              />
+            </div>
+            <div class="controls__years">
+              <span id="start-label">1962</span>
+              <span id="end-label">2026</span>
+            </div>
+          </div>
+          <div class="controls__group controls__group--playback" role="group" aria-label="Playback rate">
+            <div class="controls__field" title="How long one simulated day takes at 1× fast-forward">
+              <span class="controls__field-label">Day</span>
+              <select id="day-length-select" class="footer-select footer-select--day" aria-label="Simulated day length at 1×">
+                <option value="10000">10s</option>
+                <option value="60000" selected>1m</option>
+                <option value="3600000">1h</option>
+                <option value="86400000">24h</option>
+              </select>
+            </div>
+            <div
+              class="controls__field"
+              title="Fast-forward multiplier — speeds earth spin and steps the timeline through calendar dates"
+            >
+              <span class="controls__field-label">×</span>
+              <select id="speed-select" class="footer-select footer-select--speed" aria-label="Playback fast-forward">
+                <option value="0.25">¼×</option>
+                <option value="1" selected>1×</option>
+                <option value="4">4×</option>
+                <option value="16">16×</option>
+                <option value="24">24×</option>
+                <option value="64">64×</option>
+              </select>
+            </div>
+          </div>
+        </div>
+        <div class="controls__row controls__row--tools">
+          <div class="controls__cluster controls__cluster--filters" role="group" aria-label="Event filters">
+            <span class="controls__cluster-label">Filter</span>
+            <label class="filter-chip filter-label" title="Limit events to the 7 days before the selected date">
+              <input type="checkbox" id="recent-only" checked />
+              <span id="recent-only-label">7d</span>
+            </label>
+            <select
+              id="quake-min-mag"
+              class="footer-select footer-select--mag"
+              title="M≥5 ~several/day · M≥6 ~every few days · M≥7 ~15/yr · M≥8 ~1/yr"
+              aria-label="Minimum earthquake magnitude"
+            >
+              <option value="5" selected>M≥5</option>
+              <option value="6">M≥6</option>
+              <option value="7">M≥7</option>
+              <option value="8">M≥8</option>
+            </select>
+            <span id="footer-tally" class="footer-tally" aria-live="polite"></span>
+          </div>
+          <div class="controls__cluster controls__cluster--globe" role="group" aria-label="Globe appearance">
+            <button type="button" id="fly-home-btn" class="preset-btn" title="Fly to Eastern Ontario and show the hi-res regional patch (~75 m/px Blue Marble + LiDAR hillshade). Dims the global shell while focused.">Home</button>
+            <label class="earth-opacity" for="earth-opacity" title="Solid continents with transparent oceans — depth-embedded quakes and geomag field lines show through water; drag to 100% for fully solid Earth">
+              <span class="controls__cluster-label">Globe</span>
+              <input type="range" id="earth-opacity" class="earth-opacity__range" min="12" max="100" value="100" aria-valuemin="12" aria-valuemax="100" aria-valuenow="100" />
+              <span id="earth-opacity-label" class="earth-opacity__label">Solid</span>
+            </label>
+          </div>
+          <div class="controls__cluster controls__cluster--presets" role="group" aria-label="Layer presets">
+            <span class="controls__cluster-label">Preset</span>
+            <button type="button" class="preset-btn" data-preset="solid" title="Solid Earth layers">Solid</button>
+            <button type="button" class="preset-btn" data-preset="space" title="Space weather layers">Space</button>
+            <button type="button" class="preset-btn" data-preset="orbital" title="Orbital geometry">Orbit</button>
+            <button type="button" class="preset-btn" data-preset="atmosphere" title="Cyclones and weather">Atmos</button>
+            <button type="button" class="preset-btn" data-preset="full" title="All layers">Full</button>
+          </div>
+          <div class="controls__cluster controls__cluster--layers">
+            <div class="layer-group" role="group" aria-label="Solid Earth layers">
+              <span class="layer-group__label">Solid</span>
+              <div class="layer-group__chips" data-layer-chips="solid"></div>
+            </div>
+            <div class="layer-group" role="group" aria-label="Atmosphere layers">
+              <span class="layer-group__label">Atmos</span>
+              <div class="layer-group__chips" data-layer-chips="atmos"></div>
+            </div>
+            <div class="layer-group" role="group" aria-label="Space weather layers">
+              <span class="layer-group__label">Space</span>
+              <div class="layer-group__chips" data-layer-chips="space"></div>
+            </div>
+            <div class="layer-group layer-group--sky" id="geo-motion-group" role="group" aria-label="Sky and diurnal motion">
+              <span class="layer-group__label">Sky</span>
+              <div class="layer-group__chips" data-layer-chips="sky"></div>
+              <div
+                class="segmented segmented--diurnal"
+                role="group"
+                aria-label="Earth rotation mode"
+                title="Sync: earth spins and moon tracks simulated days while playing. Free: decorative spin; bodies stay on the scrubbed date."
+              >
+                <button type="button" class="segmented__btn segmented__btn--active" data-diurnal="sync">Sync</button>
+                <button type="button" class="segmented__btn" data-diurnal="free">Free</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </footer>
+    </div>

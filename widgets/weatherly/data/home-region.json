@@ -1,0 +1,90 @@
+{
+  "generatedAt": "2026-07-01T03:10:30.566Z",
+  "id": "eastern-ontario",
+  "name": "Eastern Ontario",
+  "label": "Home",
+  "bbox": {
+    "west": -82,
+    "south": 43.5,
+    "east": -74,
+    "north": 47.5
+  },
+  "center": {
+    "lat": 45.4215,
+    "lon": -75.6972,
+    "name": "Ottawa"
+  },
+  "resolution": "8192x4096",
+  "projection": "EPSG:4326 geographic",
+  "extentKm": {
+    "width": 624,
+    "height": 445
+  },
+  "metersPerPixel": {
+    "eastWest": 76,
+    "northSouth": 109
+  },
+  "about": "High-resolution regional day/night surface patch draped on the globe. Global 8k texture stays as coarse context; this bbox is the detail layer where you live.",
+  "assets": {
+    "day": "/textures/home/day.jpg",
+    "night": "/textures/home/night.jpg",
+    "hillshade": "/textures/home/hillshade.png",
+    "terrainCoverage": "/textures/home/terrain-coverage.png"
+  },
+  "sources": [
+    {
+      "id": "gibs-blue-marble-ng-regional",
+      "role": "day",
+      "name": "Blue Marble Next Generation (regional)",
+      "org": "NASA GIBS",
+      "layer": "BlueMarble_NextGeneration",
+      "link": "https://gibs.earthdata.nasa.gov/",
+      "epistemic": "derived"
+    },
+    {
+      "id": "gibs-viirs-black-marble-regional",
+      "role": "night",
+      "name": "VIIRS Black Marble (regional)",
+      "org": "NASA GIBS / NOAA VIIRS",
+      "layer": "VIIRS_Black_Marble",
+      "link": "https://gibs.earthdata.nasa.gov/",
+      "epistemic": "measured"
+    }
+  ],
+  "terrain": {
+    "generatedAt": "2026-07-01T03:33:31.249840+00:00",
+    "resolution": "1024x730",
+    "borderLon": -75.35,
+    "featherDeg": 0.35,
+    "about": "Cross-border LiDAR hillshade: Canada HRDEM DTM (WMS) feathered into US USGS 3DEP Seamless 1 m DEM. Fixes the hard project-edge cutoff in federal viewers.",
+    "assets": {
+      "hillshade": "/textures/home/hillshade.png",
+      "coverage": "/textures/home/terrain-coverage.png"
+    },
+    "sources": [
+      {
+        "id": "hrdem-dtm-hillshade",
+        "role": "ca-hillshade",
+        "name": "HRDEM DTM hillshade",
+        "org": "NRCan / CCMEO Datacube",
+        "link": "https://datacube.services.geo.ca/",
+        "epistemic": "measured"
+      },
+      {
+        "id": "usgs-3dep-seamless-1m",
+        "role": "us-dem",
+        "name": "USGS 3DEP Seamless 1 m DEM",
+        "org": "USGS / Microsoft Planetary Computer",
+        "link": "https://planetarycomputer.microsoft.com/dataset/3dep-seamless",
+        "epistemic": "measured"
+      },
+      {
+        "id": "wobblescope-terrain-blend",
+        "role": "fusion",
+        "name": "Cross-border hillshade fusion",
+        "org": "Wobblescope",
+        "epistemic": "derived"
+      }
+    ]
+  }
+}

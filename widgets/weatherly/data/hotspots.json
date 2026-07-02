@@ -1,0 +1,246 @@
+{
+  "source": "Wilson (1963) mantle hotspot framework; positions from GVP / plate tectonic references",
+  "about": "Mantle hotspots are long-lived upwellings of unusually hot rock from the deep mantle. Tectonic plates drift over them, leaving chains of volcanoes and seamounts while the source stays relatively fixed.",
+  "hotspots": [
+    {
+      "id": "hawaii",
+      "name": "Hawaii",
+      "lat": 19.42,
+      "lon": -155.29,
+      "region": "Pacific",
+      "volcano": "Kīlauea / Mauna Loa",
+      "chain": "Hawaiian–Emperor seamount chain",
+      "note": "Archetype oceanic hotspot; the Pacific plate drifts northwest ~7 cm/yr over the source."
+    },
+    {
+      "id": "yellowstone",
+      "name": "Yellowstone",
+      "lat": 44.46,
+      "lon": -110.84,
+      "region": "North America",
+      "volcano": "Yellowstone caldera",
+      "chain": "Snake River Plain trail",
+      "note": "Continental hotspot under the North American plate; caldera-forming eruptions and geothermal activity."
+    },
+    {
+      "id": "iceland",
+      "name": "Iceland",
+      "lat": 64.96,
+      "lon": -19.02,
+      "region": "North Atlantic",
+      "volcano": "Askja / Grímsvötn",
+      "chain": "Iceland plume + Mid-Atlantic Ridge",
+      "note": "Hotspot meets a spreading ridge, building a subaerial volcanic plateau."
+    },
+    {
+      "id": "galapagos",
+      "name": "Galápagos",
+      "lat": -0.37,
+      "lon": -91.55,
+      "region": "Pacific",
+      "volcano": "Fernandina / Sierra Negra",
+      "chain": "Galápagos volcanic platform",
+      "note": "Shallow mantle plume near a spreading center; shields and calderas on young oceanic crust."
+    },
+    {
+      "id": "easter",
+      "name": "Easter",
+      "lat": -27.12,
+      "lon": -109.37,
+      "region": "Pacific",
+      "volcano": "Easter Island (Rapa Nui)",
+      "chain": "Easter seamount line",
+      "note": "Nazca plate hotspot; isolated basaltic volcanism far from the nearest spreading ridge."
+    },
+    {
+      "id": "society",
+      "name": "Society",
+      "lat": -17.68,
+      "lon": -149.43,
+      "region": "Pacific",
+      "volcano": "Tahiti / Mehetia",
+      "chain": "Society Islands",
+      "note": "Pacific plate hotspot producing shield volcanoes and reef-capped islands in French Polynesia."
+    },
+    {
+      "id": "samoa",
+      "name": "Samoa",
+      "lat": -14.23,
+      "lon": -169.51,
+      "region": "Pacific",
+      "volcano": "Savaiʻi / Taʻū",
+      "chain": "Samoa linear volcanic chain",
+      "note": "Pacific hotspot with young basaltic shields; some volcanism may also track nearby ridge processes."
+    },
+    {
+      "id": "macdonald",
+      "name": "Macdonald",
+      "lat": -28.98,
+      "lon": -140.25,
+      "region": "Pacific",
+      "volcano": "Macdonald seamount",
+      "chain": "Austral–Gambier seamount trail",
+      "note": "Submarine hotspot volcano south of the Society chain on very young Pacific lithosphere."
+    },
+    {
+      "id": "cobb",
+      "name": "Cobb",
+      "lat": 46.7,
+      "lon": -130.8,
+      "region": "Pacific",
+      "volcano": "Axial Seamount",
+      "chain": "Cobb–Eickelberg seamount chain",
+      "note": "Juan de Fuca / Gorda ridge region; plume magma mixes with spreading-center volcanism."
+    },
+    {
+      "id": "tristan",
+      "name": "Tristan",
+      "lat": -37.1,
+      "lon": -12.28,
+      "region": "South Atlantic",
+      "volcano": "Tristan da Cunha",
+      "chain": "Walvis Ridge (fossil trail)",
+      "note": "South Atlantic hotspot; Walvis Ridge records Africa's passage over the plume."
+    },
+    {
+      "id": "bouvet",
+      "name": "Bouvet",
+      "lat": -54.42,
+      "lon": 3.38,
+      "region": "South Atlantic",
+      "volcano": "Bouvet Island",
+      "chain": "Bouvet volcanic platform",
+      "note": "Remote subantarctic hotspot volcano on the Southwest Indian Ridge sector of the Atlantic."
+    },
+    {
+      "id": "reunion",
+      "name": "Réunion",
+      "lat": -21.11,
+      "lon": 55.54,
+      "region": "Indian Ocean",
+      "volcano": "Piton de la Fournaise",
+      "chain": "Mascarene Plateau / Chagos–Laccadive trail",
+      "note": "Active Indian Ocean hotspot; Deccan Traps flood basalts linked to its early history."
+    },
+    {
+      "id": "kerguelen",
+      "name": "Kerguelen",
+      "lat": -49.35,
+      "lon": 69.5,
+      "region": "Indian Ocean",
+      "volcano": "Kerguelen Plateau",
+      "chain": "Southern Kerguelen Plateau",
+      "note": "Large submarine plateau built by prolonged plume volcanism in the southern Indian Ocean."
+    },
+    {
+      "id": "afar",
+      "name": "Afar",
+      "lat": 11.55,
+      "lon": 41.0,
+      "region": "East Africa",
+      "volcano": "Erta Ale / Dabbahu",
+      "chain": "Afar triple-junction rifts",
+      "note": "Mantle upwelling at a continental rift; flood basalts and persistent spreading-related volcanism."
+    },
+    {
+      "id": "canary",
+      "name": "Canary",
+      "lat": 28.54,
+      "lon": -16.25,
+      "region": "North Atlantic",
+      "volcano": "Teide (Tenerife)",
+      "chain": "Canary Islands",
+      "note": "Atlantic hotspot archipelago off northwest Africa; large ocean-island shield volcanoes."
+    },
+    {
+      "id": "azores",
+      "name": "Azores",
+      "lat": 38.5,
+      "lon": -28.0,
+      "region": "North Atlantic",
+      "volcano": "Pico / Furnas",
+      "chain": "Azores Plateau",
+      "note": "Hotspot-related magmatism near the Azores triple junction and slow-spreading ridge."
+    },
+    {
+      "id": "ascension",
+      "name": "Ascension",
+      "lat": -7.95,
+      "lon": -14.37,
+      "region": "South Atlantic",
+      "volcano": "Ascension Island",
+      "chain": "Ascension isolated shield",
+      "note": "Small mid-ocean island volcano on young South Atlantic crust far from continents."
+    },
+    {
+      "id": "cape-verde",
+      "name": "Cape Verde",
+      "lat": 15.0,
+      "lon": -24.0,
+      "region": "North Atlantic",
+      "volcano": "Fogo",
+      "chain": "Cape Verde archipelago",
+      "note": "Atlantic hotspot chain west of Senegal; alkaline ocean-island volcanism on old oceanic lithosphere."
+    },
+    {
+      "id": "eifel",
+      "name": "Eifel",
+      "lat": 50.2,
+      "lon": 7.0,
+      "region": "Europe",
+      "volcano": "Laacher See / Eifel maars",
+      "chain": "Rhenish Massif volcanic field",
+      "note": "Small continental hotspot / lithospheric anomaly; sporadic maar and caldera eruptions."
+    },
+    {
+      "id": "pitcairn",
+      "name": "Pitcairn",
+      "lat": -25.07,
+      "lon": -130.1,
+      "region": "Pacific",
+      "volcano": "Pitcairn Island",
+      "chain": "Pitcairn–Gambier seamount chain",
+      "note": "Pacific plate hotspot trail between the Gambier and Austral island groups."
+    },
+    {
+      "id": "marquesas",
+      "name": "Marquesas",
+      "lat": -9.0,
+      "lon": -140.0,
+      "region": "Pacific",
+      "volcano": "Ua Pou / Fatu Hiva",
+      "chain": "Marquesas Islands",
+      "note": "Older Pacific hotspot archipelago with deeply eroded basaltic shields."
+    },
+    {
+      "id": "amsterdam",
+      "name": "Amsterdam",
+      "lat": -37.83,
+      "lon": 77.55,
+      "region": "Indian Ocean",
+      "volcano": "Amsterdam Island",
+      "chain": "Amsterdam–Saint Paul Plateau",
+      "note": "Indian Ocean intraplate volcanism on the Antarctic plate near the Southeast Indian Ridge."
+    },
+    {
+      "id": "fernando",
+      "name": "Fernando de Noronha",
+      "lat": -3.85,
+      "lon": -32.42,
+      "region": "South Atlantic",
+      "volcano": "Fernando de Noronha",
+      "chain": "Fernando hotspot trail",
+      "note": "South American plate hotspot; alkaline ocean-island volcanism off northeast Brazil."
+    },
+    {
+      "id": "new-england",
+      "name": "New England",
+      "lat": 41.0,
+      "lon": -69.0,
+      "region": "North Atlantic",
+      "volcano": "Bear Seamount (extinct)",
+      "chain": "New England Seamount Chain",
+      "note": "Fossil hotspot track on North Atlantic abyssal plain; active volcanism long since passed."
+    }
+  ]
+}

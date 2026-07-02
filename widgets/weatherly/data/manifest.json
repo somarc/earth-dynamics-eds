@@ -1,0 +1,79 @@
+{
+  "generated": "2026-06-25T02:25:37.724Z",
+  "sources": {
+    "iersEop": {
+      "url": "https://hpiers.obspm.fr/iers/eop/eopc04/eopc04.1962-now",
+      "name": "IERS Earth Orientation Parameters C04",
+      "org": "International Earth Rotation and Reference Systems Service (IERS)",
+      "citation": "Bizouard et al., IERS EOP C04 series consistent with ITRF 2020",
+      "link": "https://hpiers.obspm.fr/eop-pc/index.php?index=C04&lang=en"
+    },
+    "usgsEarthquakes": {
+      "name": "USGS Earthquake Catalog",
+      "org": "U.S. Geological Survey",
+      "citation": "USGS FDSN Event Web Service",
+      "link": "https://earthquake.usgs.gov/fdsnws/event/1/"
+    },
+    "gvpEruptions": {
+      "url": "https://webservices.volcano.si.edu/geoserver/GVP-VOTW/wfs?service=WFS&version=2.0.0&request=GetFeature&typeName=GVP-VOTW:E3WebApp_Eruptions1960&outputFormat=application/json",
+      "name": "Smithsonian GVP Eruptions Since 1960",
+      "org": "Smithsonian Institution Global Volcanism Program",
+      "citation": "Global Volcanism Program, E3WebApp_Eruptions1960",
+      "link": "https://volcano.si.edu/database/webservices.cfm"
+    },
+    "gvpVolcanoes": {
+      "url": "https://webservices.volcano.si.edu/geoserver/GVP-VOTW/wfs?service=WFS&version=2.0.0&request=GetFeature&typeName=GVP-VOTW:Smithsonian_VOTW_Holocene_Volcanoes&outputFormat=application/json",
+      "name": "Smithsonian GVP Holocene Volcanoes",
+      "org": "Smithsonian Institution Global Volcanism Program",
+      "citation": "Global Volcanism Program, Holocene Volcano List",
+      "link": "https://volcano.si.edu/gvp_votw.cfm"
+    },
+    "jplHorizons": {
+      "name": "JPL Horizons Ephemeris",
+      "org": "NASA Jet Propulsion Laboratory",
+      "citation": "Horizons API, DE441 ephemeris, geocentric ecliptic vectors",
+      "link": "https://ssd.jpl.nasa.gov/horizons/"
+    }
+  },
+  "ranges": {
+    "eop": {
+      "start": "1962-01-01",
+      "end": "2026-05-25",
+      "count": 23521
+    },
+    "earthquakes": {
+      "start": "1990-01-01",
+      "end": "2026-06-24",
+      "count": 61915,
+      "minMagnitude": 5
+    },
+    "eruptions": {
+      "start": "2017-01-15",
+      "end": "1980-10-16",
+      "count": 2224
+    },
+    "volcanoes": {
+      "count": 1215
+    },
+    "ephemeris": {
+      "start": "1962-01-01",
+      "end": "2026-05-25",
+      "count": 23521,
+      "bodies": [
+        "Moon",
+        "Sun",
+        "Mercury",
+        "Venus",
+        "Mars",
+        "Jupiter",
+        "Saturn"
+      ]
+    }
+  },
+  "constants": {
+    "nominalOmegaPicoradS": 72921151.467064,
+    "nominalDayLengthSec": 86400,
+    "arcsecToRad": 0.00000484813681109536,
+    "poleMotionNote": "IERS x,y are celestial pole offsets in arcseconds; polhode plotted as (x, -y) per IERS convention."
+  }
+}

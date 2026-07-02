@@ -1,0 +1,42 @@
+{
+  "generatedAt": "2026-07-01T03:08:18.629Z",
+  "resolution": "8192x4096",
+  "projection": "EPSG:4326 equirectangular",
+  "about": "Global cloud-free Blue Marble day surface and VIIRS Black Marble night lights from NASA GIBS, plus a derived land mask for hybrid ocean transparency.",
+  "assets": {
+    "day": "earth-day.jpg",
+    "night": "earth-night.jpg",
+    "mask": "earth-mask.png"
+  },
+  "sources": [
+    {
+      "id": "gibs-blue-marble-ng",
+      "role": "day",
+      "name": "Blue Marble Next Generation",
+      "org": "NASA GIBS / NASA Earth Observatory",
+      "layer": "BlueMarble_NextGeneration",
+      "link": "https://gibs.earthdata.nasa.gov/",
+      "epistemic": "derived",
+      "citation": "NASA Global Imagery Browse Services (GIBS), BlueMarble_NextGeneration composite"
+    },
+    {
+      "id": "gibs-viirs-black-marble",
+      "role": "night",
+      "name": "VIIRS Black Marble",
+      "org": "NASA GIBS / NOAA VIIRS Day/Night Band",
+      "layer": "VIIRS_Black_Marble",
+      "link": "https://earthdata.nasa.gov/eosdis/science-system-description/eosdis-components/gibs",
+      "epistemic": "measured",
+      "citation": "NASA GIBS VIIRS_Black_Marble night lights composite"
+    },
+    {
+      "id": "wobblescope-land-mask",
+      "role": "mask",
+      "name": "Derived land/ocean mask",
+      "org": "Wobblescope",
+      "epistemic": "derived",
+      "citation": "Land mask derived from day texture chroma (land=opaque, ocean=translucent in hybrid globe mode)"
+    }
+  ],
+  "kmPerPixelEquator": 5
+}
