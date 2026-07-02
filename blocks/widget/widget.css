@@ -1,3 +1,12 @@
 .widget {
   display: block;
 }
+
+/* Weatherly instrument fills the viewport band inside authored pages */
+.widget.weatherly,
+.weatherly-container .weatherly {
+  width: 100%;
+  min-height: 100dvh;
+  max-height: 100dvh;
+  overflow: hidden;
+}
